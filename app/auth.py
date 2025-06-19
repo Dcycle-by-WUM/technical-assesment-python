@@ -10,7 +10,7 @@ from .database import get_db
 from .models import User
 from .schemas import TokenData
 
-SECRET_KEY = "my-super-secret-key-that-should-not-be-hardcoded"
+SECRET_KEY = "my-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
