@@ -44,7 +44,7 @@ You have **1 hour** to identify and fix the following issues in the codebase:
 ## What You Need to Do
 
 ### 1. Run the Application
-First, try to run the application and see what happens. You'll likely encounter some issues.
+First, try to run the application.
 
 ### 2. Identify and Fix Issues
 Look for:

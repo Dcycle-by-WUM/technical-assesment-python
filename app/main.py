@@ -13,7 +13,7 @@ app = FastAPI(title="Task Management API")
 
 security = HTTPBearer()
 
-SECRET_KEY = "my-super-secret-key-that-should-not-be-hardcoded"
+SECRET_KEY = "my-super-secret-key"
 
 
 @app.post("/users/", response_model=UserResponse)
@@ -47,11 +47,8 @@ def get_tasks(
     priority_filter: str = None,
     limit: int = 1000,
 ):
-    # MEMORY LEAK BUG: Loading all tasks into memory and filtering in Python
-    # This will cause memory issues with large datasets
     all_tasks = db.query(Task).all()
 
-    # Filter in memory instead of at database level
     filtered_tasks = []
     for task in all_tasks:
         if task.user_id == current_user.id:
@@ -61,7 +58,6 @@ def get_tasks(
                 continue
             filtered_tasks.append(task)
 
-    # Apply limit after loading everything into memory
     return filtered_tasks[:limit]
 
 
